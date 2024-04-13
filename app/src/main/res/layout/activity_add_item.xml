@@ -10,14 +10,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
-    <ListView
-        android:id="@+id/list_images"
-        android:layout_below="@id/name_item"
+    <ImageView
+        android:layout_marginTop="50dp"
+        android:id="@+id/view_image"
         android:layout_width="match_parent"
         android:layout_height="250dp"/>
 
     <Button
-        android:layout_below="@id/list_images"
+        android:layout_below="@id/view_image"
         android:id="@+id/button_add_images"
         android:text="Добавить фото товара"
         android:layout_width="match_parent"
