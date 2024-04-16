@@ -46,7 +46,7 @@ public class ProfileActivity extends AppCompatActivity {
         buttonEditProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Действия при нажатии кнопки "Редактировать профиль"
+                startActivity(new Intent(getApplicationContext(), RefactorProfile.class));
             }
         });
 
@@ -63,7 +63,7 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), AddItem.class));
-                // Действия при нажатии кнопки "Текущая активность"
+
             }
         });
 

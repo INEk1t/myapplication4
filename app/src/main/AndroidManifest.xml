@@ -23,6 +23,7 @@
         </activity>
         <activity android:name="com.example.myapplication.ProfileActivity" />
         <activity android:name=".AddItem" />
+        <activity android:name=".RefactorProfile"/>
     </application>
 
 </manifest>

@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.content.Context;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -20,13 +22,15 @@ public class AddItem extends AppCompatActivity {
     Button buttonAdd;
     Button buttonAddImages;
     Database database;
-
+    SharedPreferences sharedpreferences;
     static final int GALLERY_REQUEST = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_item);
+
+        sharedpreferences = getSharedPreferences("app_data", Context.MODE_PRIVATE);
 
         buttonBack = findViewById(R.id.button_back);
         buttonAdd = findViewById(R.id.button_add);
@@ -75,6 +79,7 @@ public class AddItem extends AppCompatActivity {
                     imageView.setImageBitmap(bitmap);
                 }
         }
+
     }
 
 }
