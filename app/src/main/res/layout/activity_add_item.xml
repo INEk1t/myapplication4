@@ -10,7 +10,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
+    <Spinner
+        android:layout_below="@+id/name_item"
+        android:id="@+id/add_spinner_categories"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"/>
+
     <ImageView
+        android:layout_below="@+id/add_spinner_categories"
         android:layout_marginTop="50dp"
         android:id="@+id/view_image"
         android:layout_width="match_parent"

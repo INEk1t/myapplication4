@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.content.Context;
+import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -22,6 +23,7 @@ public class AddItem extends AppCompatActivity {
     Button buttonAdd;
     Button buttonAddImages;
     Database database;
+    Spinner spinner;
     SharedPreferences sharedpreferences;
     static final int GALLERY_REQUEST = 1;
 
@@ -33,9 +35,21 @@ public class AddItem extends AppCompatActivity {
         sharedpreferences = getSharedPreferences("app_data", Context.MODE_PRIVATE);
 
         buttonBack = findViewById(R.id.button_back);
-        buttonAdd = findViewById(R.id.button_add);
         buttonAddImages = findViewById(R.id.button_add_images);
+
+        buttonAdd = findViewById(R.id.button_add);
         editText = findViewById(R.id.name_item);
+        spinner = findViewById(R.id.add_spinner_categories);
+
+        database = new Database(this);
+
+        buttonAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                database.insert(editText.getText().toString(), spinner.getCount());
+            }
+        });
+
 
         buttonBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,10 +58,6 @@ public class AddItem extends AppCompatActivity {
             }
         });
 
-        buttonAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {database.insert(editText.getText().toString());}
-        });
 
         buttonAddImages.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,6 +65,7 @@ public class AddItem extends AppCompatActivity {
                 Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
                 photoPickerIntent.setType("image/*");
                 startActivityForResult(photoPickerIntent, GALLERY_REQUEST);
+
             }
         });
     }

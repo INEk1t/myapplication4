@@ -24,9 +24,11 @@ public class TaskAdapter extends ArrayAdapter<Task> {
 
         TextView idTextView = convertView.findViewById(R.id.tv_id);
         TextView idTextTextView = convertView.findViewById(R.id.tv_text);
+        TextView idTextTypeView = convertView.findViewById(R.id.tv_type);
 
         idTextTextView.setText(String.valueOf(task.id));
         idTextTextView.setText(task.text);
+        idTextTypeView.setText(task.type);
 
         return convertView;
     }

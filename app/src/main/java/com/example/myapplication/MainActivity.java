@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private Button buttonProfile;
     TaskAdapter taskAdapter;
     Database database;
+    ArrayList<Task> tasks;
 
     private List<String> categoryList;
     private List<String> itemList;
@@ -53,10 +54,14 @@ public class MainActivity extends AppCompatActivity {
         ArrayAdapter<String> categoryAdapter = new ArrayAdapter<>(this, R.layout.spinner_drop, R.id.weekofday, categoryList);
         spinnerCategories.setAdapter(categoryAdapter);
 
-        itemList = new ArrayList<>(Arrays.asList());
+        database = new Database(this);
+        tasks = database.selectAll();
 
-        ArrayAdapter<String> itemAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, itemList);
-        listViewItems.setAdapter(itemAdapter);
+        taskAdapter = new TaskAdapter(
+                this, tasks
+        );
+
+        listViewItems.setAdapter(taskAdapter);
 
         listViewItems.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

@@ -14,8 +14,8 @@
     <!-- Список предлагаемых товаров -->
     <ListView
         android:id="@+id/listViewItems"
-        android:layout_width="800dp"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="1040dp"
         android:layout_below="@id/spinnerCategories"
         android:layout_marginTop="16dp"/>
 
