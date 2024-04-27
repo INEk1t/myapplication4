@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -16,6 +17,8 @@ import android.widget.Spinner;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
 
 public class AddItem extends AppCompatActivity {
     EditText editText;
@@ -23,9 +26,10 @@ public class AddItem extends AppCompatActivity {
     Button buttonAdd;
     Button buttonAddImages;
     Database database;
-    Spinner spinner;
+    private Spinner spinner;
     SharedPreferences sharedpreferences;
     static final int GALLERY_REQUEST = 1;
+    private List<String> categoryList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,11 +46,15 @@ public class AddItem extends AppCompatActivity {
         spinner = findViewById(R.id.add_spinner_categories);
 
         database = new Database(this);
+        categoryList = Arrays.asList("Electronics 1", "Clothing 2", "Books 3", "Furniture 4", "Toys 5");
+
+        ArrayAdapter<String> categoryAdapter = new ArrayAdapter<>(this, R.layout.spinner_drop, R.id.weekofday, categoryList);
+        spinner.setAdapter(categoryAdapter);
 
         buttonAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                database.insert(editText.getText().toString(), spinner.getCount());
+                database.insert(editText.getText().toString(), spinner.getFirstVisiblePosition() + 1);
             }
         });
 

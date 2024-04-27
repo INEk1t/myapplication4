@@ -8,7 +8,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,7 +17,6 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Spinner spinnerCategories;
     private ListView listViewItems;
     private Button buttonCurrentActivity;
     private Button buttonProfile;
@@ -44,12 +42,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        spinnerCategories = findViewById(R.id.spinnerCategories);
+        Spinner spinnerCategories = findViewById(R.id.spinnerCategories);
         listViewItems = findViewById(R.id.listViewItems);
         buttonCurrentActivity = findViewById(R.id.buttonCurrentActivity);
         buttonProfile = findViewById(R.id.buttonProfile);
 
-        categoryList = Arrays.asList("Electronics", "Clothing", "Books", "Furniture", "Toys");
+        categoryList = Arrays.asList("Electronics 1", "Clothing 2", "Books 3", "Furniture 4", "Toys 5");
 
         ArrayAdapter<String> categoryAdapter = new ArrayAdapter<>(this, R.layout.spinner_drop, R.id.weekofday, categoryList);
         spinnerCategories.setAdapter(categoryAdapter);
@@ -66,8 +64,8 @@ public class MainActivity extends AppCompatActivity {
         listViewItems.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String selectedItem = itemList.get(position);
-                Toast.makeText(MainActivity.this, "Selected Item: " + selectedItem, Toast.LENGTH_SHORT).show();
+//                String selectedItem = itemList.get(position);
+//                Toast.makeText(MainActivity.this, "Selected Item: " + selectedItem, Toast.LENGTH_SHORT).show();
             }
         });
 
