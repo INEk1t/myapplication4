@@ -4,14 +4,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.myapplication.model.Category;
+import com.example.myapplication.model.CategoryAdapter;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -25,6 +28,9 @@ public class MainActivity extends AppCompatActivity {
 
     private List<String> categoryList;
     private List<String> itemList;
+
+    CategoryAdapter categoryAdapter;
+    RecyclerView categoryRecycler;
 
     @Override
     protected void onStart() {
@@ -46,14 +52,20 @@ public class MainActivity extends AppCompatActivity {
         buttonCurrentActivity = findViewById(R.id.buttonCurrentActivity);
         buttonProfile = findViewById(R.id.buttonProfile);
 
-        categoryList = Arrays.asList("Electronics 1", "Clothing 2", "Books 3", "Furniture 4", "Toys 5");
+        List<Category> categoryList = new ArrayList<>();//("техника 1", "одежда 2", "книги 3", "мебель 4", "игрушки 5");
+        categoryList.add(new Category(1, "техника"));
+        categoryList.add(new Category(2, "одежда"));
+        categoryList.add(new Category(3, "книги"));
+        categoryList.add(new Category(4, "мебель"));
+        categoryList.add(new Category(5, "игрушки"));
 
-        ArrayAdapter<String> categoryAdapter = new ArrayAdapter<>(this, R.layout.spinner_drop, R.id.weekofday, categoryList);
-        //spinnerCategories.setAdapter(categoryAdapter);
+
+        setCategoryRecycler(categoryList);
+
+        // не отображается весь сисок товаров, только категория с техникой
 
         database = new Database(this);
         tasks = database.selectAll();
-
         taskAdapter = new TaskAdapter(
                 this, tasks
         );
@@ -82,5 +94,17 @@ public class MainActivity extends AppCompatActivity {
                 // Действия при нажатии кнопки "Профиль"
             }
         });
+    }
+
+    private void setCategoryRecycler(List<Category> categoryList) {
+
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false);
+
+        categoryRecycler = findViewById(R.id.categoryRecycler);
+        categoryRecycler.setLayoutManager(layoutManager);
+
+        categoryAdapter = new CategoryAdapter(this, categoryList);
+        categoryRecycler.setAdapter(categoryAdapter);
+
     }
 }

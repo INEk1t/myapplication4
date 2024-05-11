@@ -1,21 +1,24 @@
 package com.example.myapplication.model;
 
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.List;
-import java.util.Locale;
+import com.example.myapplication.R;
 
-public class AdapterCategory extends RecyclerView.Adapter<AdapterCategory.CategoryViewHolder> {
+import java.util.List;
+
+public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder> {
 
     Context context;
-    List<Locale.Category> categories;
+    List<Category> categories;
 
-    public AdapterCategory(Context context, List<Locale.Category> categories) {
+    public CategoryAdapter(Context context, List<Category> categories) {
         this.context = context;
         this.categories = categories;
     }
@@ -23,12 +26,13 @@ public class AdapterCategory extends RecyclerView.Adapter<AdapterCategory.Catego
     @NonNull
     @Override
     public CategoryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
+        View categoryItems = LayoutInflater.from(context).inflate(R.layout.category_item, parent, false);
+        return new CategoryViewHolder(categoryItems);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CategoryViewHolder holder, int position) {
-
+    public void onBindViewHolder(@NonNull CategoryAdapter.CategoryViewHolder holder, int position) {
+        holder.categoryTitle.setText(categories.get(position).getTitle());
     }
 
     @Override
@@ -38,8 +42,12 @@ public class AdapterCategory extends RecyclerView.Adapter<AdapterCategory.Catego
 
     public static final class CategoryViewHolder extends RecyclerView.ViewHolder {
 
+        TextView categoryTitle;
+
         public CategoryViewHolder(@NonNull View itemView) {
             super(itemView);
+
+            categoryTitle = itemView.findViewById(R.id.categoryTitle);
         }
     }
 }

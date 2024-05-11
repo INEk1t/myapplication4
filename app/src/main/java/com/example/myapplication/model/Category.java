@@ -1,11 +1,11 @@
 package com.example.myapplication.model;
 
-public class Categore {
+public class Category {
 
     int id;
     String title;
 
-    public Categore(int id, String title) {
+    public Category(int id, String title) {
         this.id = id;
         this.title = title;
     }
