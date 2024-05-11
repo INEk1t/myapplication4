@@ -13,9 +13,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.content.Context;
 import android.widget.Spinner;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
