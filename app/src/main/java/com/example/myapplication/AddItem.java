@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -7,15 +8,17 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.content.Context;
 import android.widget.Spinner;
+
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.myapplication.model.Category;
+
 import java.io.IOException;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
 public class AddItem extends AppCompatActivity {
@@ -44,10 +47,15 @@ public class AddItem extends AppCompatActivity {
         spinner = findViewById(R.id.add_spinner_categories);
 
         database = new Database(this);
-        categoryList = Arrays.asList("Electronics 1", "Clothing 2", "Books 3", "Furniture 4", "Toys 5");
+        List<Category> categoryList = new ArrayList<>();//("техника 1", "одежда 2", "книги 3", "мебель 4", "игрушки 5");
+        categoryList.add(new Category(1, "техника"));
+        categoryList.add(new Category(2, "одежда"));
+        categoryList.add(new Category(3, "книги"));
+        categoryList.add(new Category(4, "мебель"));
+        categoryList.add(new Category(5, "игрушки"));
 
-        ArrayAdapter<String> categoryAdapter = new ArrayAdapter<>(this, R.layout.spinner_drop, R.id.weekofday, categoryList);
-        spinner.setAdapter(categoryAdapter);
+        //ArrayAdapter<String> categoryAdapter = new ArrayAdapter<>(this, R.layout.spinner_drop, R.id.weekofday, categoryList);
+        //spinner.setAdapter(categoryAdapter);
 
         buttonAdd.setOnClickListener(new View.OnClickListener() {
             @Override

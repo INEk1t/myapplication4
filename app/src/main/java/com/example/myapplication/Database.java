@@ -41,7 +41,7 @@ public class Database {
                 long id = cursor.getLong(cursor.getColumnIndexOrThrow(COLUMN_ID));
                 String text = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TEXT));
                 Integer type = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_TYPE));
-                tasks.add(new Task(id, text, type));
+                //tasks.add(new Task(id, text, type));
             } while (cursor.moveToNext());
         }
         return tasks;
