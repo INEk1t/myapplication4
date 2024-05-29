@@ -59,16 +59,25 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/itemType"
+                    android:id="@+id/inscription"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/white"
                     android:textSize="20sp"
-                    android:layout_margin="25dp"
-                    android:text="@string/app_name"/>
+                    android:layout_marginLeft="10dp"
+                    android:text="@string/inscription"/>
+
+                <TextView
+                    android:id="@+id/seller_contacts"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:layout_margin="10dp"
+                    android:text="@string/number"/>
 
             </LinearLayout>
 

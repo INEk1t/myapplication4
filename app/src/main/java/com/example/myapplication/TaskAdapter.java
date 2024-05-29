@@ -59,7 +59,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
             taskBg = itemView.findViewById(R.id.taskBg);
             taskImage = itemView.findViewById(R.id.imageView2);
             taskTitle = itemView.findViewById(R.id.itemTitle);
-            taskType = itemView.findViewById(R.id.itemType);
+            taskType = itemView.findViewById(R.id.seller_contacts);
         }
     }
 }

@@ -1,4 +1,13 @@
 <resources>
     <string name="app_name">My Application</string>
     <string name="item_type">Electronic</string>
+    <string name="inscription">Телефон: </string>
+    <string name="number">89128670853</string>
+    <string-array name="planets_array">
+        <item>техника</item>
+        <item>одежда</item>
+        <item>книги</item>
+        <item>мебель</item>
+        <item>игрушки</item>
+    </string-array>
 </resources>

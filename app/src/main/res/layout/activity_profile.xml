@@ -9,7 +9,7 @@
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/images"/>
+        android:src="@drawable/images" />
 
     <!-- Информация о пользователе -->
 
@@ -23,16 +23,16 @@
         android:layout_marginTop="7dp"
         android:padding="16dp"
         android:text="Имя пользователя"
-        android:textSize="20sp" />
+        android:textSize="20dp" />
 
     <Button
         android:id="@+id/buttonEditProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Редактировать профиль"
-        android:layout_centerHorizontal="true"
         android:layout_below="@id/textViewUserName"
-        android:layout_marginTop="16dp"/>
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text="Редактировать профиль" />
 
     <!-- Информация о товарах пользователя -->
     <ListView
@@ -40,7 +40,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/buttonEditProfile"
-        android:layout_marginTop="1dp"/>
+        android:layout_marginTop="1dp" />
 
     <Button
         android:id="@+id/buttonCurrentActivity"
@@ -48,30 +48,29 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        android:text="Главная" />
+        android:layout_margin="20dp"
+        android:text="Главная"
+        android:textSize="10dp" />
 
     <Button
         android:id="@+id/addItemButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-        android:text="Добавить товар" />
+        android:layout_centerHorizontal="true"
+        android:layout_margin="20dp"
+        android:text="Добавить товар"
+        android:textSize="10dp" />
 
     <!-- Кнопка "Профиль" -->
     <Button
         android:id="@+id/buttonProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Профиль"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:layout_margin="16dp"/>
+        android:layout_alignParentBottom="true"
+        android:layout_margin="20dp"
+        android:text="Профиль"
+        android:textSize="10dp" />
 
 </RelativeLayout>

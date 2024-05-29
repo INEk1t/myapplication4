@@ -25,7 +25,6 @@ public class MainActivity extends AppCompatActivity {
     Database database;
     ArrayList<Task> tasks;
 
-    private List<String> categoryList;
     private List<String> itemList;
 
     CategoryAdapter categoryAdapter;
@@ -62,8 +61,8 @@ public class MainActivity extends AppCompatActivity {
         setCategoryRecycler(categoryList);
 
         List<Task> taskList = new ArrayList<>();//("техника 1", "одежда 2", "книги 3", "мебель 4", "игрушки 5");
-        taskList.add(new Task(0, "java_2", "pbllesos", "ofigennbli pbllesos", "#424345"));
-        taskList.add(new Task(1, "java_2", "kyrtka", "ofigennbli kyrtka", "#747B2B"));
+        taskList.add(new Task(0, "java_2", "pbllesos", "89128670853", "#424345"));
+        taskList.add(new Task(1, "java_2", "kyrtka", "89128670853", "#747B2B"));
 
         setTaskRecycler(taskList);
 

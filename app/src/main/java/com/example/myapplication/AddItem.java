@@ -8,14 +8,19 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.SpinnerAdapter;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.model.Category;
+import com.example.myapplication.model.CategoryAdapter;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -28,9 +33,10 @@ public class AddItem extends AppCompatActivity {
     Button buttonAddImages;
     Database database;
     private Spinner spinner;
+    RecyclerView categoryRecycler;
+    CategoryAdapter categoryAdapter;
     SharedPreferences sharedpreferences;
     static final int GALLERY_REQUEST = 1;
-    private List<String> categoryList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,21 +47,16 @@ public class AddItem extends AppCompatActivity {
 
         buttonBack = findViewById(R.id.button_back);
         buttonAddImages = findViewById(R.id.button_add_images);
-
+        spinner = findViewById(R.id.add_spinner_categories);
         buttonAdd = findViewById(R.id.button_add);
         editText = findViewById(R.id.name_item);
-        spinner = findViewById(R.id.add_spinner_categories);
+
 
         database = new Database(this);
-        List<Category> categoryList = new ArrayList<>();//("техника 1", "одежда 2", "книги 3", "мебель 4", "игрушки 5");
-        categoryList.add(new Category(1, "техника"));
-        categoryList.add(new Category(2, "одежда"));
-        categoryList.add(new Category(3, "книги"));
-        categoryList.add(new Category(4, "мебель"));
-        categoryList.add(new Category(5, "игрушки"));
-
-        //ArrayAdapter<String> categoryAdapter = new ArrayAdapter<>(this, R.layout.spinner_drop, R.id.weekofday, categoryList);
-        //spinner.setAdapter(categoryAdapter);
+        Spinner spinner = (Spinner) findViewById(R.id.add_spinner_categories);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource( this, R.array.planets_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
 
         buttonAdd.setOnClickListener(new View.OnClickListener() {
             @Override
