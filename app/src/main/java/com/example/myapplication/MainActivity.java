@@ -3,8 +3,10 @@ package com.example.myapplication;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -20,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ListView listViewItems;
     private Button buttonCurrentActivity;
-    private Button buttonProfile;
+    private Button buttonAddItem;
     TaskAdapter taskAdapter;
     Database database;
     ArrayList<Task> tasks;
@@ -49,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         //Spinner spinnerCategories = findViewById(R.id.spinnerCategories);
         //listViewItems = findViewById(R.id.listViewItems);
         buttonCurrentActivity = findViewById(R.id.buttonCurrentActivity);
-        buttonProfile = findViewById(R.id.buttonProfile);
+        buttonAddItem = findViewById(R.id.buttonAddItem);
 
         List<Category> categoryList = new ArrayList<>();//("техника 1", "одежда 2", "книги 3", "мебель 4", "игрушки 5");
         categoryList.add(new Category(1, "техника"));
@@ -67,18 +69,18 @@ public class MainActivity extends AppCompatActivity {
         setTaskRecycler(taskList);
 
         database = new Database(this);
-        tasks = database.selectAll();
+//        tasks = database.selectAll();
 //        taskAdapter = new TaskAdapter(
 //                this, tasks
 //        );
 
-        //listViewItems.setAdapter(taskAdapter);
-
+//        listViewItems.setAdapter(taskAdapter);
+//
 //        listViewItems.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 //            @Override
 //            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-////                String selectedItem = itemList.get(position);
-////                Toast.makeText(MainActivity.this, "Selected Item: " + selectedItem, Toast.LENGTH_SHORT).show();
+//                String selectedItem = itemList.get(position);
+//                Toast.makeText(MainActivity.this, "Selected Item: " + selectedItem, Toast.LENGTH_SHORT).show();
 //            }
 //        });
 
@@ -89,13 +91,27 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        buttonProfile.setOnClickListener(new View.OnClickListener() {
+        buttonAddItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
-                // Действия при нажатии кнопки "Профиль"
+                // Создайте намерение для открытия второй активности
+                Intent intent = new Intent(MainActivity.this, AddItem.class);
+                // Запустите вторую активность
+                startActivity(intent);
             }
         });
+
+    }
+
+    private void setCategoryRecycler(List<Category> categoryList) {
+
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false);
+
+        categoryRecycler = findViewById(R.id.categoryRecycler);
+        categoryRecycler.setLayoutManager(layoutManager);
+
+        categoryAdapter = new CategoryAdapter(this, categoryList); // Corrected line
+        categoryRecycler.setAdapter(categoryAdapter);
     }
 
     private void setTaskRecycler(List<Task> taskList) {
@@ -108,15 +124,4 @@ public class MainActivity extends AppCompatActivity {
         taskRecycler.setAdapter(taskAdapter);
     }
 
-    private void setCategoryRecycler(List<Category> categoryList) {
-
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false);
-
-        categoryRecycler = findViewById(R.id.categoryRecycler);
-        categoryRecycler.setLayoutManager(layoutManager);
-
-        categoryAdapter = new CategoryAdapter(this, categoryList);
-        categoryRecycler.setAdapter(categoryAdapter);
-
-    }
 }

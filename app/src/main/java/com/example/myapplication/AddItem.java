@@ -64,16 +64,6 @@ public class AddItem extends AppCompatActivity {
                 database.insert(editText.getText().toString(), spinner.getFirstVisiblePosition() + 1);
             }
         });
-
-
-        buttonBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
-            }
-        });
-
-
         buttonAddImages.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -81,6 +71,16 @@ public class AddItem extends AppCompatActivity {
                 photoPickerIntent.setType("image/*");
                 startActivityForResult(photoPickerIntent, GALLERY_REQUEST);
 
+            }
+        });
+
+        buttonBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Создайте намерение для открытия второй активности
+                Intent intent = new Intent(AddItem.this, MainActivity.class);
+                // Запустите вторую активность
+                startActivity(intent);
             }
         });
     }
