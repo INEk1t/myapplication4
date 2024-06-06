@@ -31,27 +31,48 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
+<!--    <LinearLayout-->
+<!--        android:id="@+id/tamgdechvet"-->
+<!--        android:layout_below="@id/button_add_images"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="horizontal">-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/fon_color"-->
+<!--            android:textSize="20dp"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Цвет фона:"/>-->
+
+<!--        <EditText-->
+<!--            android:textSize="20dp"-->
+<!--            android:id="@+id/background_color"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"/>-->
+
+<!--    </LinearLayout>-->
+
     <LinearLayout
-        android:layout_below="@id/button_add_images"
+        android:layout_below="@+id/button_add_images"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/fon_color"
+            android:id="@+id/text_number"
             android:textSize="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Цвет фона:"/>
+            android:text="Ваш номер телефона:"/>
 
         <EditText
             android:textSize="20dp"
-            android:id="@+id/background_color"
+            android:id="@+id/number"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
     </LinearLayout>
-
 
     <!-- Кнопка "Назад" -->
     <Button

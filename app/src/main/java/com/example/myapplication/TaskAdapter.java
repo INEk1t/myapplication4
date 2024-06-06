@@ -33,13 +33,15 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull TaskViewHolder holder, int position) {
-        holder.taskBg.setCardBackgroundColor(Color.parseColor(tasks.get(position).getColor()));
-
+        if (position < tasks.size()) { // Проверка на валидность индекса
+            Task currentTask = tasks.get(position);
+        //holder.taskBg.setCardBackgroundColor(Color.parseColor(tasks.get(position).getColor()));
         int imageId = context.getResources().getIdentifier("ic_" + tasks.get(position).getImg(), "drawable", context.getPackageName());
         holder.taskImage.setImageResource(imageId);
-
         holder.taskTitle.setText(tasks.get(position).getTitle());
         holder.taskType.setText(tasks.get(position).getType());
+        holder.taskNumber.setText(tasks.get(position).getNumber());
+        }
     }
 
     @Override
@@ -49,17 +51,17 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
 
     public static final class TaskViewHolder extends RecyclerView.ViewHolder {
 
-        CardView taskBg;
+        //CardView taskBg;
         ImageView taskImage;
-        TextView taskTitle, taskType;
+        TextView taskTitle, taskType, taskNumber;
 
         public TaskViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            taskBg = itemView.findViewById(R.id.taskBg);
             taskImage = itemView.findViewById(R.id.imageView2);
             taskTitle = itemView.findViewById(R.id.itemTitle);
-            taskType = itemView.findViewById(R.id.seller_contacts);
+            taskType = itemView.findViewById(R.id.typeItem);
+            taskNumber = itemView.findViewById(R.id.seller_contacts);
         }
     }
 }

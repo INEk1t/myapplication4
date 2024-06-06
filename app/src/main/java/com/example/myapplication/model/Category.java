@@ -1,5 +1,7 @@
 package com.example.myapplication.model;
 
+import android.content.Context;
+
 public class Category {
 
     int id;
@@ -10,7 +12,7 @@ public class Category {
         this.title = title;
     }
 
-    public Category() {
+    public Category(Context id, String title) {
     }
 
     public int getId() {

@@ -1,32 +1,39 @@
 package com.example.myapplication;
 
+import android.content.Context;
+
 import com.example.myapplication.model.Category;
 
-public class Task extends Category {
+import java.io.Serializable;
+
+public class Task extends Category implements Serializable {
     int id;
     String img;
     String title;
     String type;
-    String color;
+    //String color;
+    String number;
 
-    public Task(int id, String title) {
+    public Task(Context id, String title) {
         super(id, title);
     }
 
-    public String getColor() {
-        return color;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
-    }
-
-    public Task(int id, String img, String title, String type, String color) {
+    public Task(int id, String img, String title, String type, String color, String number) {
+        super(id, title);
         this.id = id;
         this.img = img;
         this.title = title;
         this.type = type;
-        this.color = color;
+        //this.color = color;
+        this.number = number;
+    }
+
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
     }
 
     public int getId() {
@@ -61,3 +68,12 @@ public class Task extends Category {
         this.type = type;
     }
 }
+
+//    public String getColor() {
+//        return color;
+//    }
+
+//    public void setColor(String color) {
+//        this.color = color;
+//    }
+//}

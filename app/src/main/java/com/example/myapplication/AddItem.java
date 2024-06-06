@@ -27,7 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AddItem extends AppCompatActivity {
-    EditText editText;
+    EditText editText, editBackground, editNumber;
     Button buttonBack;
     Button buttonAdd;
     Button buttonAddImages;
@@ -37,6 +37,7 @@ public class AddItem extends AppCompatActivity {
     CategoryAdapter categoryAdapter;
     SharedPreferences sharedpreferences;
     static final int GALLERY_REQUEST = 1;
+    private int k = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,18 +51,22 @@ public class AddItem extends AppCompatActivity {
         spinner = findViewById(R.id.add_spinner_categories);
         buttonAdd = findViewById(R.id.button_add);
         editText = findViewById(R.id.name_item);
+        //editBackground = findViewById(R.id.background_color);
+        editNumber = findViewById(R.id.number);
 
 
         database = new Database(this);
         Spinner spinner = (Spinner) findViewById(R.id.add_spinner_categories);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource( this, R.array.planets_array, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.planets_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
 
         buttonAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                database.insert(editText.getText().toString(), spinner.getFirstVisiblePosition() + 1);
+                database.insert(0, null, editText.getText().toString(),
+                        spinner.getTransitionName().toString(), editBackground.getText().toString(),
+                        editNumber.getText().toString());
             }
         });
         buttonAddImages.setOnClickListener(new View.OnClickListener() {
@@ -83,6 +88,22 @@ public class AddItem extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        buttonAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //database.insert(0, "java_2", "pbllesos", "техника", "#424345", "89128670853");
+                Intent intent = new Intent(AddItem.this, MainActivity.class);
+                Task newTask = new Task(k, "java_2", editText.getText().toString(), spinner.getSelectedItem().toString(), editBackground.getText().toString(), editNumber.getText().toString());
+                intent.putExtra("task", newTask);
+//                intent.putExtra("title", editText.getText());
+//                intent.putExtra("img", "java_2");
+//                intent.putExtra("type", spinner.getSelectedItem().toString());
+//                intent.putExtra("color", editBackground.getText());
+//                intent.putExtra("number", editNumber.getText());
+
+            }
+        });
     }
 
 
@@ -93,9 +114,9 @@ public class AddItem extends AppCompatActivity {
         Bitmap bitmap = null;
         ImageView imageView = (ImageView) findViewById(R.id.view_image);
 
-        switch(requestCode) {
+        switch (requestCode) {
             case GALLERY_REQUEST:
-                if(resultCode == RESULT_OK){
+                if (resultCode == RESULT_OK) {
                     Uri selectedImage = imageReturnedIntent.getData();
                     try {
                         bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), selectedImage);

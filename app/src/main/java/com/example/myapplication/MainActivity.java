@@ -3,6 +3,7 @@ package com.example.myapplication;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.database.Cursor;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
@@ -63,12 +64,19 @@ public class MainActivity extends AppCompatActivity {
         setCategoryRecycler(categoryList);
 
         List<Task> taskList = new ArrayList<>();//("техника 1", "одежда 2", "книги 3", "мебель 4", "игрушки 5");
-        taskList.add(new Task(0, "java_2", "pbllesos", "89128670853", "#424345"));
-        taskList.add(new Task(1, "java_2", "kyrtka", "89128670853", "#747B2B"));
+//        taskList.add(new Task(0, "java_2", "pbllesos", "техника", "#424345", "89128670853"));
+//        taskList.add(new Task(1, "java_2", "kyrtka", "одежда", "#424345", "89128670853"));
+
+        Intent intent = getIntent();
+        Task newTask = (Task) intent.getSerializableExtra("task");
+
+        taskList.add(newTask);
 
         setTaskRecycler(taskList);
 
         database = new Database(this);
+
+        //Cursor cursor = database.getAllData();
 //        tasks = database.selectAll();
 //        taskAdapter = new TaskAdapter(
 //                this, tasks
